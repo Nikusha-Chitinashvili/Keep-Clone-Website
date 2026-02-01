@@ -1,6 +1,6 @@
 # Keep Clone Website - HTML, CSS, JS
 
-A simple note-taking web application inspired by Google Keep, built with HTML, CSS, JavaScript, and Bootstrap.
+A simple note-taking web application built with HTML, CSS, JavaScript, and Bootstrap.
 
 ## Features
 
