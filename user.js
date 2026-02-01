@@ -1,4 +1,3 @@
-// User profile page functionality
 document.addEventListener('DOMContentLoaded', function() {
     checkAuth();
     loadUserData();
@@ -26,20 +25,17 @@ function setupEventListeners() {
     const searchInput = document.querySelector('input[type="search"]');
     const tagFilters = document.querySelectorAll('.list-group-item');
 
-    // Update profile
     updateButton.addEventListener('click', function(e) {
         e.preventDefault();
         updateProfile();
     });
 
-    // Search functionality
     if (searchInput) {
         searchInput.addEventListener('input', function() {
             console.log('Searching:', this.value);
         });
     }
 
-    // Tag filters
     tagFilters.forEach(filter => {
         filter.addEventListener('click', function(e) {
             e.preventDefault();
@@ -58,7 +54,6 @@ function updateProfile() {
     const password = passwordInput.value.trim();
     const confirmPassword = confirmPasswordInput.value.trim();
 
-    // Check if passwords are being changed
     if (password || confirmPassword) {
         if (password !== confirmPassword) {
             showAlert('Passwords do not match', 'danger');
@@ -70,7 +65,6 @@ function updateProfile() {
             return;
         }
 
-        // Update password
         const currentUser = localStorage.getItem('currentUser');
         const users = JSON.parse(localStorage.getItem('users')) || [];
         const userIndex = users.findIndex(u => u.email === currentUser);
@@ -80,7 +74,6 @@ function updateProfile() {
             localStorage.setItem('users', JSON.stringify(users));
             showAlert('Password updated successfully!', 'success');
             
-            // Clear password fields
             passwordInput.value = '';
             confirmPasswordInput.value = '';
         }

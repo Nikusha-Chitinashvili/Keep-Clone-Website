@@ -1,4 +1,3 @@
-// Sign in page functionality
 document.addEventListener('DOMContentLoaded', function() {
     const signInForm = document.querySelector('form');
     const emailInput = document.getElementById('email');
@@ -6,14 +5,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const rememberMeCheckbox = document.getElementById('rememberMe');
     const signInButton = document.querySelector('.btn-success');
 
-    // Handle sign in
     signInButton.addEventListener('click', function(e) {
         e.preventDefault();
         
         const email = emailInput.value.trim();
         const password = passwordInput.value.trim();
 
-        // Validate inputs
         if (!email || !password) {
             showAlert('Please fill in all fields', 'danger');
             return;
@@ -24,12 +21,10 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        // Get registered users from localStorage
         const users = JSON.parse(localStorage.getItem('users')) || [];
         const user = users.find(u => u.email === email && u.password === password);
 
         if (user) {
-            // Save current user
             localStorage.setItem('currentUser', email);
             
             if (rememberMeCheckbox.checked) {
@@ -45,12 +40,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Email validation
     function isValidEmail(email) {
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     }
 
-    // Show alert message
     function showAlert(message, type) {
         const existingAlert = document.querySelector('.alert');
         if (existingAlert) {

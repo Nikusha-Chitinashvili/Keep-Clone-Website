@@ -1,4 +1,3 @@
-// Home page - Notes functionality
 document.addEventListener('DOMContentLoaded', function() {
     checkAuth();
     loadNotes();
@@ -17,18 +16,15 @@ function setupEventListeners() {
     const searchInput = document.querySelector('input[type="search"]');
     const tagFilters = document.querySelectorAll('.list-group-item');
 
-    // Save note
     saveButton.addEventListener('click', function(e) {
         e.preventDefault();
         saveNote();
     });
 
-    // Search functionality
     searchInput.addEventListener('input', function() {
         filterNotes(this.value);
     });
 
-    // Tag filters
     tagFilters.forEach(filter => {
         filter.addEventListener('click', function(e) {
             e.preventDefault();
@@ -68,7 +64,6 @@ function saveNote() {
 
     showAlert('Note saved successfully!', 'success');
     
-    // Clear form
     document.getElementById('noteTitle').value = '';
     document.getElementById('noteBody').value = '';
     document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);

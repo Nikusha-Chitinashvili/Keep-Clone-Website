@@ -1,4 +1,3 @@
-// Tags page functionality
 document.addEventListener('DOMContentLoaded', function() {
     checkAuth();
     loadTags();
@@ -16,7 +15,6 @@ function setupEventListeners() {
     const saveButton = document.querySelector('.btn-primary');
     const tagInput = document.querySelector('input[type="text"]');
 
-    // Save new tag
     saveButton.addEventListener('click', function(e) {
         e.preventDefault();
         const tagName = tagInput.value.trim();
@@ -30,7 +28,6 @@ function setupEventListeners() {
         tagInput.value = '';
     });
 
-    // Setup delete and edit buttons
     setupTagButtons();
 }
 
@@ -38,7 +35,6 @@ function saveTag(tagName) {
     const currentUser = localStorage.getItem('currentUser');
     const tags = JSON.parse(localStorage.getItem(`tags_${currentUser}`)) || [];
 
-    // Check if tag already exists
     if (tags.some(t => t.name.toLowerCase() === tagName.toLowerCase())) {
         showAlert('This tag already exists', 'warning');
         return;
@@ -61,7 +57,6 @@ function loadTags() {
     
     console.log(`Loaded ${tags.length} tags for user ${currentUser}`);
     
-    // Update tag cards with actual data
     const tagCards = document.querySelectorAll('.col-md-4');
     tagCards.forEach((card, index) => {
         if (tags[index]) {
@@ -75,7 +70,6 @@ function loadTags() {
 }
 
 function setupTagButtons() {
-    // Delete buttons
     document.querySelectorAll('a.btn-danger').forEach(btn => {
         btn.addEventListener('click', function(e) {
             e.preventDefault();
@@ -89,7 +83,6 @@ function setupTagButtons() {
         });
     });
 
-    // Edit buttons
     document.querySelectorAll('a.btn-secondary').forEach(btn => {
         btn.addEventListener('click', function(e) {
             e.preventDefault();

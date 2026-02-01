@@ -1,11 +1,9 @@
-// Registration page functionality
 document.addEventListener('DOMContentLoaded', function() {
     const emailInput = document.getElementById('email');
     const passwordInput = document.getElementById('password');
     const confirmPasswordInput = document.getElementById('confirmPassword');
     const createAccountButton = document.querySelector('.btn-success');
 
-    // Handle registration
     createAccountButton.addEventListener('click', function(e) {
         e.preventDefault();
         
@@ -13,7 +11,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const password = passwordInput.value.trim();
         const confirmPassword = confirmPasswordInput.value.trim();
 
-        // Validate inputs
         if (!email || !password || !confirmPassword) {
             showAlert('Please fill in all fields', 'danger');
             return;
@@ -34,23 +31,19 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        // Get existing users or initialize empty array
         const users = JSON.parse(localStorage.getItem('users')) || [];
         
-        // Check if user already exists
         if (users.some(u => u.email === email)) {
             showAlert('An account with this email already exists', 'danger');
             return;
         }
 
-        // Add new user
         users.push({
             email: email,
             password: password,
             createdAt: new Date().toISOString()
         });
 
-        // Save to localStorage
         localStorage.setItem('users', JSON.stringify(users));
         localStorage.setItem('currentUser', email);
 
@@ -60,12 +53,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 1000);
     });
 
-    // Email validation
     function isValidEmail(email) {
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     }
 
-    // Show alert message
     function showAlert(message, type) {
         const existingAlert = document.querySelector('.alert');
         if (existingAlert) {
