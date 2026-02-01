@@ -1,0 +1,40 @@
+body {
+    background: white;
+    min-height: 100vh;
+}
+
+.card {
+    border: none;
+    border-radius: 15px;
+}
+
+.card-body {
+    background-color: white;
+    border-radius: 15px;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.4);
+}
+
+.form-control {
+    border-radius: 8px;
+    padding: 12px;
+    border: 1px solid #e0e0e0;
+}
+
+.form-control:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}

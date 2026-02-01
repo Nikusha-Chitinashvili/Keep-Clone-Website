@@ -1,0 +1,20 @@
+.main {
+    margin-top: 20px;
+}
+
+.message {
+    padding-top: 20px;
+}
+
+.hero-section {
+    padding: 60px 0;
+}
+
+.feature-card {
+    padding: 30px 20px;
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
